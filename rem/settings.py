@@ -25,7 +25,7 @@ SECRET_KEY = 'dihfk4^xftkz%%76p@!*#rgcc*&v9o6&@qkguzvdl7+0z&v8(d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['remdjangotest.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
