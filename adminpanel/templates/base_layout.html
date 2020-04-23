@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" class="app">
+<head>
+    {% block top_import %}
+    <meta charset="utf-8"/>
+    <title>REM</title>
+    <meta name="description" content=" iuaeorg, dashboard"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'js/datatables/datatables.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'parsley/parsley.css' %}" type="text/css"/>
+    <script src="{% static 'admin/plugins/jQuery/jquery-3.1.1.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    {% endblock %}
+
+</head>
+<body class="">
+<section class="vbox">
+    {% block top_header %}
+    <!-- Theme main header-->
+    <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+        <div class="navbar-header aside-md dk">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                <i class="fa fa-bars"></i>
+            </a>
+            <a href="#" class="navbar-brand">
+                <span class="hidden-nav-xs" style="
+    font-size: 12px;"> <h2>REM</h2>  </span>
+            </a>
+            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                <i class="fa fa-cog"></i>
+            </a>
+        </div>
+        <ul class="nav navbar-nav hidden-xs">
+            <li>
+                <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs"> <i
+                        class="fa fa-outdent text"></i> <i class="fa fa-indent text-active"></i> </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+
+            <li>
+
+
+                <form method="post" action="" id="form-logout">
+                    {% csrf_token %}
+                </form>
+
+                <a href="javascript:$('#form-logout').submit();" style="width: 100px;"
+                   class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs hidden-nav-xs"> Logout</a>
+
+            </li>
+
+        </ul>
+    </header>
+    {% endblock %}
+    <section>
+        <section class="hbox stretch">
+            {% block sidemenu %}
+            <aside class="bg-black aside-md hidden-print hidden-xs" id="nav">
+                <section class="vbox">
+                    <section class="w-f scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                             data-size="10px"
+                             data-railOpacity="0.2">
+                            <div class="clearfix wrapper dk nav-user hidden-xs">
+                                <div class="dropdown">
+                                    <span class="hidden-nav-xs clear">
+                                <span class="block m-t-xs">
+                                    <span class="text-lt">{{request.session.user.Name}}</span>
+                                </span>
+                                <span class="text-muted text-xs block">{{request.session.user.roleName}} </span>
+                            </span>
+                                </div>
+                            </div>
+                            <!-- nav -->
+                            <nav class="nav-primary hidden-xs">
+                                <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm"></div>
+                                <ul class="nav nav-main" data-ride="collapse">
+                                    <li class="">
+                                        <a href="" class="auto">
+
+                                            <i class="i i-gauge icon"> </i> <span
+                                                class="font-normal">Dashboard</span> </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url "category" %}" class="auto"> <i
+                                            class="fa fa-paste icon"> </i>
+                                        <span class="font-normal">category</span> </a>
+                                    </li>
+<!--                                    <li class="treeview">-->
+<!--                                        <a href="#">-->
+<!--                                            <i class="fa fa-edit"></i> <span>Configuration</span>-->
+<!--                                            <span class="pull-right-container">-->
+<!--              <i class="fa fa-angle-left pull-right"></i>-->
+<!--            </span>-->
+<!--                                        </a>-->
+<!--                                        <ul class="treeview-menu">-->
+<!--                                            <li><a href=""><i class="fa fa-circle-o"></i> Source</a></li>-->
+<!--                                            <li><a href=""><i class="fa fa-circle-o"></i> Activity</a></li>-->
+<!--                                            <li><a href=""><i class="fa fa-circle-o"></i> Other Voice Type</a></li>-->
+
+
+<!--                                        </ul>-->
+<!--                                    </li>-->
+
+
+                                </ul>
+
+
+                            </nav>
+                            <!-- / nav -->
+                        </div>
+                    </section>
+                    <footer class="footer hidden no-padder text-center-nav-xs"><a href="modal.lockme.html"
+                                                                                  data-toggle="ajaxModal"
+                                                                                  class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+                        <i class="i i-logout"></i> </a> <a href="#nav" data-toggle="class:nav-xs"
+                                                           class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
+                        <i
+                                class="i i-circleleft text"></i> <i class="i i-circleright text-active"></i> </a>
+                    </footer>
+                </section>
+            </aside>
+            {% endblock %}
+            <!-- /close Theme aside -->
+            <!-- /.aside -->
+            <section id="content">
+                {% block content %}
+                <h1>wefwfwfwfw</h1>
+                {% endblock %}
+            </section>
+        </section>
+    </section>
+</section>
+<!-- Bootstrap -->
+<!-- App -->
+{% block bottom_import %}
+<script src="{% static 'js/theme-main.js' %}"></script>
+
+<script src="{% static 'js/datatables/jquery.dataTables.min.js' %}"></script>
+
+<script src="{% static 'js/theme-plugin.js' %}"></script>
+
+<script src="{% static 'js/jquery.form.js' %}"></script>
+<script src="{% static 'parsley/parsley.min.js' %}"></script>
+
+<script src="{% static 'js/app.js' %}"></script>
+
+
+<script>
+            $(function () {
+                $('ul.nav.nav-main li:nth-child(1)').addClass('active');
+            });
+
+
+
+
+
+
+</script>
+{% endblock %}
+</body>
+</html>

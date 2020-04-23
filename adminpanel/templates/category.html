@@ -1,0 +1,175 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<section class="hbox stretch">
+    <section>
+        <section class="vbox">
+            <section class="scrollable padder">
+
+                <section class="row m-b-md brud-theme">
+                    <div class="col-sm-6 text-black">
+                        <ol class="breadcrumb text-left">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="#">List of Category</li>
+
+                        </ol>
+                    </div>
+                    <div class="col-sm-6 text-right text-left m-t-sm">
+                        <small>Welcome back, {{request.session.user.user__firstName}}</small>
+                    </div>
+                </section>
+<!--                <section class="panel panel-default">-->
+<!--                    <header class="panel-heading">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-8">-->
+<!--                                <h4><i class="fa fa-list-ul"></i>-->
+<!--                                    Add Category-->
+<!--                                </h4>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </header>-->
+<!--                    <form class="form-horizontal" id="form" method="post" action="{% url " addactivity-->
+<!--                    " %}" >-->
+<!--                    {% csrf_token %}-->
+
+<!--                    <div class = "modal-body">-->
+<!--                    <input type="hidden" name="ActivityIdPk" value="{{Activity.ActivityIdPk}}"/>-->
+<!--                    <div class="modal-body">-->
+<!--                        <div class="form-group">-->
+<!--                            <label class="control-label col-sm-2" required>Category Name<span-->
+<!--                                    class="required-color">*</span></label>-->
+<!--                            <div class="col-sm-10">-->
+<!--                                <input type="text" class="form-control" name="Name"-->
+<!--                                       required-->
+<!--                                       placeholder="Activity Name" autocomplete="off"-->
+<!--                                       value="{{Activity.ActivityName}}"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer" style="text-align: left">-->
+
+<!--                            <button id="btn_submit" type="submit"-->
+<!--                                    class="btn btn-success  text-center">Save-->
+<!--                            </button>-->
+<!--                            <a href="" class="btn btn-info text-center">Reset</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    </div>-->
+<!--                    </form>-->
+
+<!--                </section>-->
+                <section class="panel panel-default">
+                    <header class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h4><i class="fa fa-list-ul"></i>
+                                    Add Category
+                                </h4>
+
+                            </div>
+
+                        </div>
+                    </header>
+                    <form class="form-horizontal" id="form" method="post" action="{% url "category" %}" >
+                    {% csrf_token %}
+
+                    <div class = "modal-body">
+                         <input type="hidden" id="category_id" name="category_id" />
+                         <input type="hidden" id="Status" name="Status" />
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" required>Category Name<span
+                                    class="required-color">*</span></label>
+                            <div class="col-sm-10">
+                                <input type="text" id="category_name" class="form-control" name="category_name" placeholder="Category Name" autocomplete="off"/>
+                           </div>
+                        </div>
+                        <div class="modal-footer" style="text-align: left">
+                            <button type="submit"class="btn btn-success  text-center">Save </button>
+                           <a href="{% url "category" %}" class="btn btn-info text-center">Reset</a>
+                        </div>
+                    </div>
+                    </div>
+                    </form>
+                </section>
+                <section class="panel panel-default">
+                    <header class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h4> <i class="fa fa-list-ul"></i>
+                                 </h4>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="table-responsive panel-body">
+                        <table class="table table-bordered table-striped m-b-none" >
+                            <thead>
+                                <tr>
+                                    <th width="10%">No.</th>
+                                    <th width=20%"> Category</th>
+                                    <th width="15%">Action</th>
+                                    <th width="15%">change Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                               {% for cat in catlist %}
+                                <tr>
+                                    <td>
+                                      {{forloop.counter}}
+                                    </td>
+                                    <td>
+                                        {{cat.category_name}}
+                                    </td>
+                                    <td>
+                                        <a type="button"
+                                           onclick="editCategory('{{cat.category_id}}','{{cat.category_name}}','{{cat.Status}}')" class="btn btn-info btn-xs" >
+                                            <i class="glyphicon glyphicon-edit" ></i>
+                                        </a>
+                                    </td>
+                                     <td>
+                                         {% if cat.Status == STATUS_ACTIVE %}
+                                         <button type="button" class="btn btn-danger pull-right btn-xs" onclick="blockActiveCategory('{{cat.category_id}}','{{STATUS_BLOCK}}')" style="width: 100%;margin-top: 2px" title="Block {{cat.category_name}} "><i class="fa fa-ban"></i> Block</button>
+                                            {%endif%}
+                                         {% if cat.Status == STATUS_BLOCK %}
+                                         <button type="button" class="btn btn-success pull-right btn-xs" onclick="blockActiveCategory('{{cat.category_id}}','{{STATUS_ACTIVE}}')" style="width: 100%;margin-top: 2px" title="Active {{cat.category_name}} "><i class="fa fa-check-square-o"></i> Active</button>
+                                            {%endif%}
+                                        </td>
+                                </tr>
+                               {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="text-center" >
+
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+<script type="text/javascript">
+    function editCategory(id,catname,status) {
+        $('#category_name').focus();
+        $('#category_id').val(id);
+        $('#category_name').val(catname);
+        $('#status').val(status);
+
+    }
+</script>
+<script type="text/javascript">
+    function blockActiveCategory(category_id, status)
+{
+
+    if(confirm("Are You Sure...?"))
+    {
+        $.getJSON("category/update-status",
+            {category_id:category_id,status:status},
+            function(res){
+                window.location.reload();
+            });
+    }
+}
+</script>
+
+{% endblock %}

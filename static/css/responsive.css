@@ -1,0 +1,129 @@
+
+@media (min-width: 768px) {
+    .dl-horizontal dt {
+        float: left;
+        width: 160px;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .dl-horizontal dd {
+        margin-left: 180px;
+    }
+}
+@media (min-width: 768px) {
+    .lead {
+        font-size: 21px;
+    }
+}
+
+@media print {
+    * {
+        color: #000 !important;
+        text-shadow: none !important;
+        background: transparent !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+    a, a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    a[href^="javascript:"]:after, a[href^="#"]:after {
+        content: "";
+    }
+    pre, blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    thead {
+        display: table-header-group;
+    }
+    tr, img {
+        page-break-inside: avoid;
+    }
+    img {
+        max-width: 100% !important;
+    }
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2, h3 {
+        page-break-after: avoid;
+    }
+    select {
+        background: #fff !important;
+    }
+    .navbar {
+        display: none;
+    }
+    .table td, .table th {
+        background-color: #fff !important;
+    }
+    .btn>.caret, .dropup>.btn>.caret {
+        border-top-color: #000 !important;
+    }
+    .label {
+        border: 1px solid #000;
+    }
+    .table {
+        border-collapse: collapse !important;
+    }
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #ddd !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .col-lg-2-4 {
+        width: 20.000%;
+        float: left;
+    }
+}
+
+@media (max-width: 767px) {
+    .shift {
+        display: none !important;
+    }
+    .shift.in {
+        display: block !important;
+    }
+    .row-2 [class*="col"] {
+        width: 50%;
+        float: left;
+    }
+    .row-2 .col-0 {
+        clear: none;
+    }
+    .row-2 li:nth-child(odd) {
+        clear: left;
+        margin-left: 0;
+    }
+    .text-center-xs {
+        text-align: center;
+    }
+    .text-left-xs {
+        text-align: left;
+    }
+    .pull-none-xs {
+        float: none !important;
+    }
+    .dropdown-menu.pull-none-xs {
+        left: 0;
+    }
+    .hidden-xs.show {
+        display: inherit !important;
+    }
+    .wrapper-lg {
+        padding: 15px;
+    }
+    .scrollable { width: 100%;}
+}

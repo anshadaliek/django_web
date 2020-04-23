@@ -1,0 +1,67 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<section class="hbox stretch">
+    <section>
+        <section class="vbox">
+            <section class="scrollable padder">
+
+                <section class="row m-b-md brud-theme">
+                    <div class="col-sm-6 text-black">
+                        <ol class="breadcrumb text-left">
+                            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                    <div class="col-sm-6 text-right text-left m-t-sm">
+                        <small>Welcome back, {{request.session.user.user__firstName}}</small>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-blue"><i class="i i-vcard "></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Individuals</span>
+                                    <span class="info-box-number"> 2 </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <!-- /.col -->
+                        <!--<div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-light-green"><i class="i i-vcard"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text"> </span>
+                                    <span class="info-box-number">  </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            <!--</div>
+                            <!-- /.info-box -->
+                        </div>
+                        <!-- /.col -->
+                        <!-- fix for small devices only -->
+                       <!-- <div class="clearfix visible-sm-block"></div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-violet"><i class="i i-vcard"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text"></span>
+                                    <span class="info-box-number"></span>
+                                </div>
+                                <!-- /.info-box-content -->
+                           <!-- </div>
+                            <!-- /.info-box -->
+                        </div>
+                    </div>
+                </section>
+                <hr class="m-t-xs">
+            </section>
+        </section>
+    </section>
+</section>
+<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+{% endblock %}
